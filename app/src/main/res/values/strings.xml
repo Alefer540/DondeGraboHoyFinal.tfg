@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">DondeGraboHoy.tfg</string>
     <string name="ciudad">Ciudad</string>
+    <string name="selected_item">Selected item:</string>
+
+    <string-array name="Languages">
+        <item>Madrid</item>
+        <item>Toledo</item>
+        <item>Barcelona</item>
+        <item>Sevilla</item>
+    </string-array>
+
+    <string-array name="interiorExterior">
+        <item>Interior</item>
+        <item>Exterior</item>
+    </string-array>
 </resources>

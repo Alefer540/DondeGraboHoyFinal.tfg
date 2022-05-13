@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "931668658985",
+    "project_id": "proyectotfg-7f322",
+    "storage_bucket": "proyectotfg-7f322.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931668658985:android:ae3286536cf739abb2c538",
+        "android_client_info": {
+          "package_name": "com.example.dondegrabohoytfg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931668658985-op3isf36hi7qt63nuu7qeub80qqu5ckh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoMGrj2pKuGOJJYxK4sWPgLeXb2ZZ1vcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931668658985-op3isf36hi7qt63nuu7qeub80qqu5ckh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

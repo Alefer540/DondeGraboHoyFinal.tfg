@@ -48,19 +48,16 @@
             android:text="¿Donde quieres rodar?."
             android:textSize="20dp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <Spinner
+                android:id="@+id/spinnerCiudad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:hint="@string/ciudad"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                />
 
-                <AutoCompleteTextView
-                    android:id="@+id/ciudad"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"/>
-            </com.google.android.material.textfield.TextInputLayout>
+
+
+
             <TextView
                 android:id="@+id/tv_2"
                 android:layout_width="match_parent"
@@ -69,7 +66,8 @@
                 android:paddingTop="10dp"
                 android:paddingLeft="15dp"
                 android:text="¿Espacio abierto o cerrado?."
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+               />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -102,7 +100,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
                 <AutoCompleteTextView
-                    android:id="@+id/ciudad"
+                    android:id="@+id/ciudad2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"/>
@@ -125,7 +123,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
                 <AutoCompleteTextView
-                    android:id="@+id/ciudad"
+                    android:id="@+id/ciudad3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"/>

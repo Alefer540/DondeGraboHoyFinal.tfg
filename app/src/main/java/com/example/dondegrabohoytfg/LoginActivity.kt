@@ -2,6 +2,7 @@ package com.example.dondegrabohoytfg
 
 
 import android.os.Bundle
+import android.telecom.Call
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
@@ -23,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
 
         //Slider de imagenes
         val carousel: ImageCarousel = findViewById(R.id.carousel)
-        sliderInicio.add(CarouselItem("https://www.google.com/search?q=shoko+madrid&tbm=isch&ved=2ahUKEwix9tOk9Nr3AhUBdRoKHZ1oDoUQ2-cCegQIABAA&oq=shoko&gs_lcp=CgNpbWcQARgAMgoIABCxAxCDARBDMggIABCABBCxAzIECAAQQzIECAAQQzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDoECCMQJzoGCAAQBxAeOgYIABAIEB46BAgAEBg6BwgjEOoCECc6CAgAELEDEIMBOgsIABCABBCxAxCDAVCPB1ifEWCdHWgBcAB4AIAB8QKIAZEHkgEHMy4yLjAuMZgBAKABAaoBC2d3cy13aXotaW1nsAEKwAEB&sclient=img&ei=eXx9YvHVHoHqaZ3RuagI&bih=968&biw=960&rlz=1C1MSIM_enES739ES739#imgrc=yEUF1cluL8kqNM"),)
+        sliderInicio.add(CarouselItem(""))
         sliderInicio.add(CarouselItem("https://www.google.com/search?q=restaurante+monico&rlz=1C1MSIM_enES739ES739&sxsrf=ALiCzsZB5S3YhlPWq1i6KB4yrr8ZwWkhaw:1652391598165&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiK8POx9tr3AhVmMewKHYpxD2QQ_AUoAnoECAIQBA&biw=1920&bih=969&dpr=1#imgrc=wemvX7vGfKOo0M"))
         sliderInicio.add(CarouselItem("https://www.google.com/search?q=casa+de+comerte+entera&rlz=1C1MSIM_enES739ES739&sxsrf=ALiCzsaW61ooTD1Sc6tJRNzYTXL_rvxaPA:1652392496794&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiP6bPe-dr3AhV2R_EDHV-RBoIQ_AUoAXoECAEQAw&biw=1920&bih=969&dpr=1#imgrc=GkaeTSE0XmD6XM"))
         carousel.addData(sliderInicio)
@@ -35,7 +36,10 @@ class LoginActivity : AppCompatActivity() {
         binding.lPass.doAfterTextChanged {
             comprobartexto()
         }
+        binding.bContinue.setOnClickListener {
 
+            MainActivity.launch(this@LoginActivity)
+        }
 
     }
     fun comprobartexto(){
@@ -46,3 +50,4 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 }
+
