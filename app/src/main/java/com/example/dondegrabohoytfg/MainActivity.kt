@@ -24,28 +24,26 @@ import java.util.*
      }
 
      private var spCiudad:Spinner?=null
+     private var spabiertoCerrado:Spinner?=null
      override fun onCreate(savedInstanceState: Bundle?) {
          super.onCreate(savedInstanceState)
          binding = ActivityMainBinding.inflate(layoutInflater)
          setContentView(R.layout.activity_main)
 
          spCiudad=findViewById(R.id.spinnerCiudad)
-
-         val listaCiudades= arrayOf("Selecciona una ciudad","Madrid","Toledo")
-         var adaptador:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_spinner_item,listaCiudades)
+         spabiertoCerrado = findViewById(R.id.spinnerAbiertoCerrado)
+         val abiertoCerrado= arrayOf("abierto","Cerrado")
+         val listaCiudades= arrayOf("Madrid","Toledo","Sevilla","Barcelona")
+         var adaptador:ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_personalizado,listaCiudades)
          spCiudad?.adapter=adaptador
-         spCiudad?.onItemSelectedListener=object:AdapterView.OnItemSelectedListener{
-             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                 TODO("Not yet implemented")
-             }
+         var adaptador2:ArrayAdapter<String> = ArrayAdapter(this,R.layout.spinner_personalizado,abiertoCerrado)
+         spabiertoCerrado?.adapter=adaptador2
 
-             override fun onNothingSelected(p0: AdapterView<*>?) {
-                 TODO("Not yet implemented")
-             }
+
 
          }
      }
- }
+
 
 
 
