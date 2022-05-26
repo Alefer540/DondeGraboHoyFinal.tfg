@@ -1,12 +1,15 @@
 package com.example.dondegrabohoytfg
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.telecom.Call
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.example.dondegrabohoytfg.databinding.ActivityLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
@@ -38,12 +41,43 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.bContinue.setOnClickListener {
 
-            MainActivity.launch(this@LoginActivity)
+            if (binding.lUsu.text.isNotEmpty() && binding.lPass.text.isNotEmpty()) {
+                FirebaseAuth.getInstance()
+                    .signInWithEmailAndPassword(
+                        binding.lUsu.text.toString(),
+                        binding.lPass.text.toString()
+                    ).addOnCompleteListener {
+                        if (it.isSuccessful){
+                            showMainActivity(it.result?.user?.email?: "")
+                        }else{
+                            showAlert()
+                        }
+                    }
+            }
         }
 
     }
+
+    private fun showAlert() {
+        val builder=AlertDialog.Builder(this)
+        builder.setTitle("Error")
+        builder.setMessage("El usuario no se encuentra registrado dentro de la app contacte con el servicio tecnico")
+        builder.setPositiveButton("Salir",null)
+        val dialog:AlertDialog=builder.create()
+        dialog.show()
+    }
+    private fun showMainActivity (email:String){
+
+        val mainIntent=Intent(this,MainActivity::class.java).apply {
+            putExtra("email",email)
+        }
+        startActivity(mainIntent)
+
+    }
+
+
     fun comprobartexto(){
-        if(binding.lUsu.text.length>3 && binding.lPass.text.length==8 ){
+        if(binding.lUsu.text.length>3 && binding.lPass.text.length==6 ){
             binding.bContinue.visibility= View.VISIBLE
         }else{
             binding.bContinue.visibility= View.GONE

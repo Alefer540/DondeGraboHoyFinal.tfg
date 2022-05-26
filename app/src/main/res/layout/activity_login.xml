@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Usuario"
-            android:digits="abcdefghijklmnñopkrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+            android:digits="abcdefghijklmnñopkrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ.@"
             android:textStyle="bold"
             android:singleLine="true"
             android:inputType="text" />
@@ -103,12 +103,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/black"
             android:hint="continuar"
             android:text="Continuar"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:visibility="gone" />
-    </LinearLayout></LinearLayout>
+    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
