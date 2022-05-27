@@ -27,8 +27,8 @@ class LoginActivity : AppCompatActivity() {
 
         //Slider de imagenes
         val carousel: ImageCarousel = findViewById(R.id.carousel)
-        sliderInicio.add(CarouselItem(""))
-        sliderInicio.add(CarouselItem("https://www.google.com/search?q=restaurante+monico&rlz=1C1MSIM_enES739ES739&sxsrf=ALiCzsZB5S3YhlPWq1i6KB4yrr8ZwWkhaw:1652391598165&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiK8POx9tr3AhVmMewKHYpxD2QQ_AUoAnoECAIQBA&biw=1920&bih=969&dpr=1#imgrc=wemvX7vGfKOo0M"))
+        sliderInicio.add(CarouselItem("https://cdn0.bodas.net/vendor/2021/3_2/960/jpg/lacasademonico-fincabodasmadrid-38_1_2021-164250074628859.jpeg"))
+        sliderInicio.add(CarouselItem("https://www.vopi4.com/archivos/piscina-salts-montjuic-02_030517200108.jpg"))
         sliderInicio.add(CarouselItem("https://www.google.com/search?q=casa+de+comerte+entera&rlz=1C1MSIM_enES739ES739&sxsrf=ALiCzsaW61ooTD1Sc6tJRNzYTXL_rvxaPA:1652392496794&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiP6bPe-dr3AhV2R_EDHV-RBoIQ_AUoAXoECAEQAw&biw=1920&bih=969&dpr=1#imgrc=GkaeTSE0XmD6XM"))
         carousel.addData(sliderInicio)
         //union entre activities

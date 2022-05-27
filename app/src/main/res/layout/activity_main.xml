@@ -34,10 +34,7 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textAlignment="center"
-        android:paddingTop="20dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"/>
+        android:padding="20dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -90,62 +87,102 @@
                 android:textColor="@color/black"
                 android:textSize="20dp" />
             <LinearLayout
-                android:id="@+id/linearEspacioAbierto"
+                android:id="@+id/linearEspacioCerrado"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:padding="20dp">
 
                 <CheckBox
-                    android:id="@+id/checkBox"
+                    android:id="@+id/checkBoxC1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Apartamento" />
 
                 <CheckBox
-                    android:id="@+id/checkBox8"
+                    android:id="@+id/checkBoxC2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Chalet" />
 
                 <CheckBox
-                    android:id="@+id/checkBox7"
+                    android:id="@+id/checkBoxC3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Restaurante" />
 
                 <CheckBox
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/checkBoxC4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hotel" />
 
                 <CheckBox
-                    android:id="@+id/checkBox3"
+                    android:id="@+id/checkBoxC5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Centro de culto" />
 
                 <CheckBox
-                    android:id="@+id/checkBox4"
+                    android:id="@+id/checkBoxC6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Museo" />
 
                 <CheckBox
-                    android:id="@+id/checkBox5"
+                    android:id="@+id/checkBoxC7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Discoteca" />
 
                 <CheckBox
-                    android:id="@+id/checkBox6"
+                    android:id="@+id/checkBoxC8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Bar de copas" />
 
 
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearEspacioAbierto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                android:padding="20dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxA1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jardin" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxA2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Parque" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxA3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Polideportivo/Piscina" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxA4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Azotea" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxA5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Parking" />
 
 
             </LinearLayout>
@@ -163,7 +200,7 @@
 
 
             <Button
-                android:layout_margin="5dp"
+                android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -171,20 +208,7 @@
                 android:text="BUSCAR"
                 android:backgroundTint="@color/black"
                 android:src="@color/black" />
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="1dp"
-                />
 
-
-            <Button
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:text="AÑADIR"
-                android:backgroundTint="@color/black" />
 
         </LinearLayout>
     </LinearLayout>
