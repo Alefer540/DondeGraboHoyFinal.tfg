@@ -18,12 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    //companion object {
-    //fun launch(context: Context) {
-    // val intent = Intent(context, MainActivity::class.java)
-    //context.startActivity(intent)
-
-    //}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -105,6 +99,17 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+        binding.botonBuscar.setOnClickListener{
+            showMainActivity()
+        }
+    }
+    private fun showMainActivity (){
+
+        val mainIntent=Intent(this,MainActivity::class.java).apply {
+
+        }
+        startActivity(mainIntent)
+
     }
     private fun setup(email:String){
 
