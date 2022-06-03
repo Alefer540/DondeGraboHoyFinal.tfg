@@ -60,7 +60,8 @@
                 android:id="@+id/spinnerCiudad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp" />
+                android:layout_margin="20dp"
+                />
             <TextView
                 android:id="@+id/tv_2"
                 android:layout_width="match_parent"
@@ -86,112 +87,29 @@
                 android:text="¿Que es lo que buscas?"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
-            <LinearLayout
-                android:id="@+id/linearEspacioCerrado"
+            <Spinner
+                android:id="@+id/spinnerEspacioAbierto"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:visibility="invisible"
-                android:padding="20dp">
-
-                <CheckBox
-                    android:id="@+id/checkBoxC1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Apartamento" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxC2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Chalet" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxC3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Restaurante" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxC4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Hotel" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxC5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Centro de culto" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxC6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Museo" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxC7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Discoteca" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxC8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Bar de copas" />
-
-
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/linearEspacioAbierto"
+                />
+            <Spinner
+                android:id="@+id/spinnerEspacioCerrado"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:visibility="invisible"
-                android:padding="20dp">
-
-                <CheckBox
-                    android:id="@+id/checkBoxA1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Jardin" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxA2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Parque" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxA3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Polideportivo/Piscina" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxA4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Azotea" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxA5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Parking" />
+                />
 
 
-            </LinearLayout>
+
+
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -208,9 +126,9 @@
                 android:scaleType="fitCenter"
                 android:text="BUSCAR"
                 android:backgroundTint="@color/black"
-                android:src="@color/black" />
+                android:src="@color/black"
+                />
 
 
         </LinearLayout>
-    </LinearLayout>
 </LinearLayout>
