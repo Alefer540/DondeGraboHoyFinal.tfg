@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
 
         val abiertoCerrado = listOf("--selecciona uno--","Abierto", "Cerrado")
         val listaCiudades = listOf("--selecciona una ciudad--","Madrid","Barcelona")
-        val listaEspacioCerrado= listOf("--selecciona uno--","Apartamento","Bar","Chalet","Centro de culto","Discoteca","Hotel","Museo","Restaurante")
-        val listaEspacioAbierto= listOf("--selecciona uno--","Azotea","Avenida","Plaza","Polideportivo/piscina","Parque")
+        val listaEspacioCerrado= listOf("--selecciona uno--","Apartamento","Bar","Chalet","Centro de culto","Hotel","Museo")
+        val listaEspacioAbierto= listOf("--selecciona uno--","Azotea","Avenida","Polideportivo/piscina","Parque")
 
         val adaptador: ArrayAdapter<String> =
             ArrayAdapter(this, R.layout.spinner_personalizado, listaCiudades)
@@ -136,14 +136,10 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 if (clickado2 == 3) {
-                    mostrarEspacio = "Plaza"
-
-                }
-                if (clickado2 == 4) {
                     mostrarEspacio = "Polideportivo/Piscina"
 
                 }
-                if (clickado2 == 5) {
+                if (clickado2 == 4) {
                     mostrarEspacio = "Parque"
 
                 }
@@ -183,10 +179,7 @@ class MainActivity : AppCompatActivity() {
                     mostrarEspacio = "Centro de culto"
 
                 }
-                if (clickado3 == 4) {
-                    mostrarEspacio = "Discoteca"
 
-                }
                 if (clickado3 == 5) {
                     mostrarEspacio = "Hotel"
 
@@ -195,11 +188,6 @@ class MainActivity : AppCompatActivity() {
                     mostrarEspacio = "Museo"
 
                 }
-                if (clickado3 == 7) {
-                    mostrarEspacio = "Restaurante"
-
-                }
-
 
 
             }
@@ -217,7 +205,6 @@ class MainActivity : AppCompatActivity() {
             val Busquedaintent = Intent(this, BusquedaActivity::class.java)
             Busquedaintent.putExtras(bundle)
             startActivity(Busquedaintent)
-
 
 
         }
