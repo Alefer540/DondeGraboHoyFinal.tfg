@@ -7,18 +7,8 @@
     android:background="@color/fondo"
     tools:context=".MainActivity">
 
-
-
-
-
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
             <ImageView
+                android:id="@+id/foto"
                 android:paddingTop="20dp"
                 android:layout_width="400dp"
                 android:layout_height="200dp"
@@ -26,22 +16,6 @@
                 android:paddingLeft="20dp"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/logo" />
-            <ImageView
-                android:layout_width="400dp"
-                android:layout_height="300dp"
-                android:layout_gravity="center"
-                android:scaleType="fitCenter"
-                android:paddingLeft="20dp"
-                android:src="@mipmap/logo" />
-            <ImageView
-                android:layout_width="400dp"
-                android:layout_height="300dp"
-                android:layout_gravity="center"
-                android:scaleType="fitCenter"
-                android:paddingLeft="20dp"
-                android:src="@mipmap/logo" />
-        </LinearLayout>
-    </HorizontalScrollView>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -197,6 +197,8 @@ class MainActivity : AppCompatActivity() {
         binding.botonBuscar.setOnClickListener {
 
 
+
+
             val bundle = Bundle()
             bundle.putString("Ciudad", mostrarCiudad)
             bundle.putString("Espacio", mostrarEspacio)
