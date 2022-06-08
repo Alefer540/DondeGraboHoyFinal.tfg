@@ -3,6 +3,7 @@ package com.example.dondegrabohoytfg
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -23,7 +24,8 @@ class BusquedaActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityBusquedaBinding
     private lateinit var database:DatabaseReference
-
+    //var url="http://maps.google.com/maps?daddr="
+    var url="https://www.google.com/maps/place/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +49,7 @@ class BusquedaActivity: AppCompatActivity() {
 
         binding.botonBuscar.setOnClickListener {
 
-            binding.botonBuscar.text="SIGUIENTE"
+            binding.botonBuscar.text=">"
 
             if (Ciudad != null){
                 if (AbiertoCerrado != null) {
@@ -71,6 +73,12 @@ class BusquedaActivity: AppCompatActivity() {
 
             startActivity(volverIntent)
         }
+        binding.botonMaps.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+
+        }
 
     }
 
@@ -82,7 +90,11 @@ class BusquedaActivity: AppCompatActivity() {
             binding.tvNombre1.text=it.value.toString()
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Direccion").get().addOnSuccessListener {
+            url="https://www.google.com/maps/place/"
             binding.tvDireccion.text=it.value.toString()
+            url+=it.value.toString()
+            println(url)
+
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Email").get().addOnSuccessListener {
             binding.tvEmail.text=it.value.toString()

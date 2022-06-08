@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 if (clickado2 == 3) {
-                    mostrarEspacio = "Polideportivo/Piscina"
+                    mostrarEspacio = "Polideportivo"
 
                 }
                 if (clickado2 == 4) {
