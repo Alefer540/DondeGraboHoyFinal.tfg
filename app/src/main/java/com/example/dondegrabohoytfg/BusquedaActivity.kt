@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.dondegrabohoytfg.databinding.ActivityBusquedaBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
@@ -15,6 +16,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.squareup.picasso.Picasso
 
 
 class BusquedaActivity: AppCompatActivity() {
@@ -44,7 +46,9 @@ class BusquedaActivity: AppCompatActivity() {
 
 
         binding.botonBuscar.setOnClickListener {
-            //&& AbiertoCerrado.isNotEmpty() && Espacio.isNotEmpty()//
+
+            binding.botonBuscar.text="SIGUIENTE"
+
             if (Ciudad != null){
                 if (AbiertoCerrado != null) {
                     if (Espacio != null) {
@@ -54,31 +58,12 @@ class BusquedaActivity: AppCompatActivity() {
                             if(num > 1){
                                 num=0
                             }
-                                //readData2(Ciudad,AbiertoCerrado,Espacio)
+
                             }
                         }
                     }
                 }
-        }
-
-
-        //mostrar datos BD
-        //APARECEN TODOS NULL
-       // database= FirebaseDatabase.getInstance().getReference()
-       // if (Ciudad != null) {
-            //if (AbiertoCerrado != null) {
-                //if (Espacio != null) {
-                   // database.child("Madrid").child("Cerrado").child("Apartamento").addValueEventListener(new ValueEventListener{
-                      // val Direccion=it.child("Email").value
-                       // val Nombre=it.child("Nombre").value
-
-                        //binding.tvDireccion.text= Direccion.toString()
-                       // binding.tvNombre.text= Nombre.toString()
-                 //   }
-             //   }
-         //   }
-      //  }
-
+             }
 
         //volver al menu de seleccion
         binding.botonVolver.setOnClickListener {
@@ -104,6 +89,10 @@ class BusquedaActivity: AppCompatActivity() {
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Telefono").get().addOnSuccessListener {
             binding.tvTelefono.text=it.value.toString()
+        }
+        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Imagen").get().addOnSuccessListener {
+            Glide.with(this).load(it.value.toString()).into(binding.imagen)
+
         }
 
 
