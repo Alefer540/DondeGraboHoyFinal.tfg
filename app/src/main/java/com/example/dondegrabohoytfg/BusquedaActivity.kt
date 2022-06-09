@@ -10,14 +10,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.dondegrabohoytfg.databinding.ActivityBusquedaBinding
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.core.view.View
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import com.squareup.picasso.Picasso
+
 
 
 class BusquedaActivity: AppCompatActivity() {
@@ -49,7 +49,10 @@ class BusquedaActivity: AppCompatActivity() {
 
         binding.botonBuscar.setOnClickListener {
 
-            binding.botonBuscar.text=">"
+            binding.botonBuscar.text="x"
+            binding.botonVolver.visibility= android.view.View.VISIBLE
+            binding.mostrardatos.visibility= android.view.View.VISIBLE
+            binding.linearbusqueda.visibility=android.view.View.GONE
 
             if (Ciudad != null){
                 if (AbiertoCerrado != null) {
@@ -87,54 +90,29 @@ class BusquedaActivity: AppCompatActivity() {
     private fun readData(ciudad:String, abiertocerrado:String,espacio:String,num:Int) {
         database= FirebaseDatabase.getInstance().getReference("Localizaciones")
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Localizacion").get().addOnSuccessListener {
-            binding.tvNombre1.text=it.value.toString()
+            binding.tvLocalizacion.text=it.value.toString()
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Direccion").get().addOnSuccessListener {
             url="https://www.google.com/maps/place/"
             binding.tvDireccion.text=it.value.toString()
             url+=it.value.toString()
-            println(url)
-
+        }
+        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Nombre").get().addOnSuccessListener {
+            binding.tvNombreAnfitrion.text=it.value.toString()
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Email").get().addOnSuccessListener {
             binding.tvEmail.text=it.value.toString()
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Telefono").get().addOnSuccessListener {
-            binding.tvTelefono.text=it.value.toString()
+            binding.tvTelf.text=it.value.toString()
+        }
+        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Descripcion").get().addOnSuccessListener {
+            binding.tvDesc.text=it.value.toString()
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Imagen").get().addOnSuccessListener {
-            Glide.with(this).load(it.value.toString()).into(binding.imagen)
+            Glide.with(this).load(it.value.toString()).into(binding.foto)
 
         }
-
-
-    }
-    //OPCION2
-   private fun readData2(ciudad:String, abiertocerrado:String,espacio:String) {
-        database= FirebaseDatabase.getInstance().getReference("Localizaciones")
-        val database1:DatabaseReference=database.child(ciudad)
-        val database2:DatabaseReference=database1.child(abiertocerrado)
-        val database3:DatabaseReference=database2.child(espacio)
-        database3.get().addOnSuccessListener{
-            it.children.forEach(){
-                var direccion =it.child("Direccion").value
-                var email =it.child("Email").value
-                var nombre =it.child("Nombre").value
-                var descripcion=it.child("Descripcion").value
-                var telefono=it.child("Telefono").value
-
-                println(nombre.toString())
-                binding.tvNombre1.text=nombre.toString()
-                binding.tvDireccion.text=direccion.toString()
-                binding.tvEmail.text=email.toString()
-                binding.tvTelefono.text=telefono.toString()
-                binding.tvDescripcion.text=descripcion.toString()
-
-            }
-
-
-        }
-
 
 
     }
