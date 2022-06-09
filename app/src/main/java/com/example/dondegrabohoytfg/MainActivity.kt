@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 if (clickado3 == 4) {
-                    mostrarEspacio = "Centro de culto"
+                    mostrarEspacio = "Centro de Culto"
 
                 }
 
