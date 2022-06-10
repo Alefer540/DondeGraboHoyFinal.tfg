@@ -34,6 +34,9 @@ class BusquedaActivity: AppCompatActivity() {
     private var number = ""
     private var correoelectrinico = ""
     private val requestCall = 1
+    private var reset=true
+    private var num=0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +49,8 @@ class BusquedaActivity: AppCompatActivity() {
         val Ciudad = bundle?.getString("Ciudad")
         val Espacio = bundle?.getString("Espacio")
         val AbiertoCerrado = bundle?.getString("AbiertoCerrado")
-        var num=0
+
+
 
         binding.tvAoC.text=AbiertoCerrado
         binding.tvCiudad.text=Ciudad
@@ -61,12 +65,14 @@ class BusquedaActivity: AppCompatActivity() {
                     if (Espacio != null) {
                         if ( Ciudad.isNotEmpty() && AbiertoCerrado.isNotEmpty()&& Espacio.isNotEmpty()){
                                 readData(Ciudad,AbiertoCerrado,Espacio,num)
-                            num++
-                            if(num > 1){
-                                num=0
+                            if (reset){
+                                num++
+                            }else{
+                                num = 0
                             }
 
-                            }
+
+                        }
                         }
                     }
                 }
@@ -84,10 +90,10 @@ class BusquedaActivity: AppCompatActivity() {
             intent.data = Uri.parse(url)
             startActivity(intent)
         }
-       /* binding.llamar.setOnClickListener{
+        binding.llamar.setOnClickListener{
             makePhoneCall()
 
-        }*/
+        }
         //enviar email
         binding.email.setOnClickListener{
             val emailIntent=Intent(Intent.ACTION_SENDTO,
@@ -120,30 +126,77 @@ class BusquedaActivity: AppCompatActivity() {
     private fun readData(ciudad:String, abiertocerrado:String,espacio:String,num:Int) {
         database= FirebaseDatabase.getInstance().getReference("Localizaciones")
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Localizacion").get().addOnSuccessListener {
-            binding.tvLocalizacion.text=it.value.toString()
+            if(it.value==null){
+                reset=false
+                binding.mostrardatos.callOnClick()
+            }else{
+                reset=true
+                binding.tvLocalizacion.text=it.value.toString()
+            }
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Direccion").get().addOnSuccessListener {
-            url="https://www.google.com/maps/place/"
-            binding.tvDireccion.text=it.value.toString()
-            url+=it.value.toString()
+            if(it.value==null){
+                reset=false
+                binding.mostrardatos.callOnClick()
+            }else{
+                reset=true
+                url="https://www.google.com/maps/place/"
+                binding.tvDireccion.text=it.value.toString()
+                url+=it.value.toString()
+            }
         }
+
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Nombre").get().addOnSuccessListener {
-            binding.tvNombreAnfitrion.text=it.value.toString()
+            if(it.value==null){
+                reset=false
+                binding.mostrardatos.callOnClick()
+            }else{
+                reset=true
+                binding.tvNombreAnfitrion.text=it.value.toString()
+            }
+
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Email").get().addOnSuccessListener {
-            binding.tvEmail.text=it.value.toString()
-            correoelectrinico=it.value.toString()
+            if (it.value == null) {
+                reset = false
+                binding.mostrardatos.callOnClick()
+            } else {
+                reset = true
+                binding.tvEmail.text = it.value.toString()
+                correoelectrinico = it.value.toString()
+            }
         }
-        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Telefono").get().addOnSuccessListener {
 
-            binding.tvTelf.text=it.value.toString()
-            number=it.value.toString()
+        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Telefono").get().addOnSuccessListener {
+            if (it.value == null) {
+                reset = false
+                binding.mostrardatos.callOnClick()
+            } else {
+                reset = true
+                binding.tvTelf.text=it.value.toString()
+                number=it.value.toString()
+            }
+
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Descripcion").get().addOnSuccessListener {
-            binding.tvDesc.text=it.value.toString()
+            if (it.value == null) {
+                reset = false
+                binding.mostrardatos.callOnClick()
+            } else {
+                reset = true
+                binding.tvDesc.text=it.value.toString()
+            }
+
         }
         database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Imagen").get().addOnSuccessListener {
             Glide.with(this).load(it.value.toString()).into(binding.foto)
+            if (it.value == null) {
+                reset = false
+                binding.mostrardatos.callOnClick()
+            } else {
+                reset = true
+                Glide.with(this).load(it.value.toString()).into(binding.foto)
+            }
 
         }
 
@@ -163,7 +216,6 @@ class BusquedaActivity: AppCompatActivity() {
                 )
             } else {
                 val dial = "tel:$number"
-                println("LLAMANDO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA $number")
                 startActivity(Intent(Intent.ACTION_CALL, Uri.parse(dial)))
             }
         } else {

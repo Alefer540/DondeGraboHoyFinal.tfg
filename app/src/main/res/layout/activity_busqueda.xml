@@ -108,18 +108,21 @@
             android:textSize="15dp"
             android:paddingLeft="20dp"
             android:layout_weight="1"/>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"/>
     </LinearLayout>
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="673dp"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/mostrardatos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/fondo"
             android:orientation="vertical"
             android:layout_margin="20dp"
@@ -142,7 +145,8 @@
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:paddingTop="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:scaleType="fitCenter"
                  />
 
@@ -258,11 +262,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
-
                 android:textSize="15dp"
                 android:hint="Descripción"
-
                 android:text="" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"/>
 
 
         </LinearLayout>
@@ -284,7 +289,7 @@
                 android:layout_weight="1"
                 android:scaleType="fitCenter"
                 android:layout_margin="15dp"
-                android:src="@mipmap/leftarrow"
+                android:src="@mipmap/usuario"
                 app:tint="#F8F4F4"
                 />
 

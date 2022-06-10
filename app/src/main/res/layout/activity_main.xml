@@ -114,19 +114,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="right"
             android:background="@color/fondo">
 
 
-            <Button
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/boton_buscar"
-                android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:text="BUSCAR"
                 android:backgroundTint="@color/black"
-                android:src="@color/black"
+                android:clickable="true"
+                android:gravity="right"
+                android:src="@drawable/arrowright"
+
+                app:tint="#F8F4F4"
+
                 />
 
 
