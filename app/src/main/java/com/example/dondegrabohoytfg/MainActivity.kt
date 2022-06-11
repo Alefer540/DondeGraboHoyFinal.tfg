@@ -129,18 +129,22 @@ class MainActivity : AppCompatActivity() {
                 if (clickado2 == 1) {
                     //mostar = getSpinnersSelections()
                     mostrarEspacio = "Azotea"
+                    mostrarBotnBuscar()
 
                 }
                 if (clickado2 == 2) {
                     mostrarEspacio = "Avenida"
+                    mostrarBotnBuscar()
 
                 }
                 if (clickado2 == 3) {
                     mostrarEspacio = "Polideportivo"
+                    mostrarBotnBuscar()
 
                 }
                 if (clickado2 == 4) {
                     mostrarEspacio = "Parque"
+                    mostrarBotnBuscar()
 
                 }
             }
@@ -165,27 +169,31 @@ class MainActivity : AppCompatActivity() {
                 if (clickado3 == 1) {
 
                     mostrarEspacio = "Apartamento"
+                    mostrarBotnBuscar()
 
                 }
                 if (clickado3 == 2) {
                     mostrarEspacio = "Bar"
-
+                    mostrarBotnBuscar()
                 }
                 if (clickado3 == 3) {
                     mostrarEspacio = "Chalet"
-
+                    mostrarBotnBuscar()
                 }
                 if (clickado3 == 4) {
                     mostrarEspacio = "Centro de Culto"
+                    mostrarBotnBuscar()
 
                 }
 
                 if (clickado3 == 5) {
                     mostrarEspacio = "Hotel"
+                    mostrarBotnBuscar()
 
                 }
                 if (clickado3 == 6) {
                     mostrarEspacio = "Museo"
+                    mostrarBotnBuscar()
 
                 }
 
@@ -211,13 +219,12 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-
-
-
-
     private fun setup(email:String){
 
         binding.tvNombreTextView.text=email
+    }
+    private fun mostrarBotnBuscar(){
+        binding.botonBuscar.visibility=View.VISIBLE
     }
 
 

@@ -51,7 +51,7 @@
             android:textColor="@color/black"
             android:textSize="15dp"
             android:paddingLeft="10dp"
-            android:layout_weight="5"
+            android:layout_weight="4"
            />
         <TextView
             android:id="@+id/tv_Ciudad"
@@ -74,7 +74,7 @@
             android:textColor="@color/black"
             android:textSize="15dp"
             android:paddingLeft="10dp"
-            android:layout_weight="5"
+            android:layout_weight="4"
             />
         <TextView
             android:id="@+id/tv_AoC"
@@ -98,7 +98,7 @@
             android:textColor="@color/black"
             android:textSize="15dp"
             android:paddingLeft="10dp"
-            android:layout_weight="5"
+            android:layout_weight="4"
             />
         <TextView
             android:id="@+id/tv_tipo"
@@ -148,6 +148,7 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:scaleType="fitCenter"
+
                  />
 
             <TextView
@@ -289,7 +290,7 @@
                 android:layout_weight="1"
                 android:scaleType="fitCenter"
                 android:layout_margin="15dp"
-                android:src="@mipmap/usuario"
+                android:src="@mipmap/search"
                 app:tint="#F8F4F4"
                 />
 

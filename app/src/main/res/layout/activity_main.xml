@@ -115,6 +115,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="right"
+            android:padding="40dp"
             android:background="@color/fondo">
 
 
@@ -128,8 +129,8 @@
                 android:backgroundTint="@color/black"
                 android:clickable="true"
                 android:gravity="right"
+                android:visibility="gone"
                 android:src="@drawable/arrowright"
-
                 app:tint="#F8F4F4"
 
                 />
