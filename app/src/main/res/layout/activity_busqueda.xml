@@ -6,339 +6,135 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/fondo"
-    android:layout_margin="15dp"
-    tools:context=".MainActivity">
-
+    tools:context=".BusquedaActivity">
 
     <ImageView
-        android:id="@+id/imagen"
         android:layout_width="200dp"
         android:layout_height="76dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
         android:src="@mipmap/logo" />
 
-
-
-    <LinearLayout
-        android:id="@+id/linearbusqueda"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/fondo">
     <TextView
         android:id="@+id/tv_presentacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="Resultado de busqueda:"
+        android:text="Bienvenido usuario"
         android:textSize="20dp"
         android:textAlignment="center"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"/>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_nombreTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Ciudad:"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:paddingLeft="10dp"
-            android:layout_weight="4"
-           />
-        <TextView
-            android:id="@+id/tv_Ciudad"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:paddingLeft="20dp"
-            android:layout_weight="1"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="A o C:"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:paddingLeft="10dp"
-            android:layout_weight="4"
-            />
-        <TextView
-            android:id="@+id/tv_AoC"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:paddingLeft="20dp"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Tipo:"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:paddingLeft="10dp"
-            android:layout_weight="4"
-            />
-        <TextView
-            android:id="@+id/tv_tipo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:paddingLeft="20dp"
-            android:layout_weight="1"/>
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"/>
-    </LinearLayout>
-    </LinearLayout>
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:padding="20dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="451dp"
         android:layout_weight="1">
 
         <LinearLayout
-            android:id="@+id/mostrardatos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+            android:id="@+id/tv_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/fondo"
-            android:orientation="vertical"
-            android:layout_margin="20dp"
-            >
+            android:textColor="@color/black"
+            android:paddingTop="30dp"
+            android:paddingLeft="15dp"
+            android:text="¿Donde quieres rodar?."
+            android:textSize="20dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerCiudad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                />
+            <TextView
+                android:id="@+id/tv_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:paddingTop="30dp"
+                android:paddingLeft="15dp"
+                android:text="¿Espacio abierto o cerrado?."
+                android:textSize="20dp"/>
+            <Spinner
+                android:id="@+id/spinnerAbiertoCerrado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                />
 
             <TextView
-                android:id="@+id/tv_localizacion"
+                android:id="@+id/tv_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="Localizacion"
-                android:text=""
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/foto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
+                android:paddingLeft="15dp"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:scaleType="fitCenter"
-
-                 />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity=""
-                android:text="Dirección:"
+                android:text="¿Que es lo que buscas?"
                 android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_direccion"
+                android:textSize="20dp" />
+            <Spinner
+                android:id="@+id/spinnerEspacioAbierto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="Dirección"
-                android:textSize="15dp"
-                android:text="" />
-
-            <TextView
+                android:layout_margin="20dp"
+                android:visibility="invisible"
+                />
+            <Spinner
+                android:id="@+id/spinnerEspacioCerrado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity=""
-                android:text="Datos del anfitrión:"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_margin="20dp"
+                android:visibility="invisible"
+                />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imagen_nombre"
-                    android:layout_width="50dp"
-                    android:layout_height="26dp"
-                    android:layout_gravity="center"
-                    android:scaleType="fitCenter"
-                    android:src="@mipmap/usuario" />
-
-                <TextView
-                    android:id="@+id/tv_nombre_anfitrion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:textSize="15dp"
-                    android:hint="Nombre"
-                    android:text="" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imagen_telf"
-                    android:layout_width="50dp"
-                    android:layout_height="26dp"
-                    android:layout_gravity="center"
-                    android:scaleType="fitCenter"
-                    android:src="@mipmap/llamada" />
-
-                <TextView
-                    android:id="@+id/tv_telf"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:textSize="15dp"
-                    android:hint="telefono"
-                    android:text="" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imagen_email"
-                    android:layout_width="50dp"
-                    android:layout_height="28dp"
-                    android:layout_gravity="center"
-                    android:scaleType="fitCenter"
-                    android:src="@mipmap/correoelectronico" />
-
-                <TextView
-                    android:id="@+id/tv_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-
-                    android:textSize="15dp"
-                    android:hint="email"
-                    android:text="" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity=""
-                android:text="Descripción:"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:hint="Descripción"
-                android:text="" />
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"/>
 
 
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/black">
+            android:gravity="right"
+            android:padding="40dp"
+            android:background="@color/fondo">
 
 
-            <ImageView
-                android:id="@+id/volver"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:layout_margin="15dp"
-                android:src="@mipmap/search"
-                app:tint="#F8F4F4"
-                />
 
-            <ImageView
-                android:id="@+id/llamar"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:layout_margin="15dp"
-                android:src="@mipmap/llamada"
-                app:tint="#F8F4F4"
-                />
-            <ImageView
-                android:id="@+id/maps"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_margin="15dp"
-                android:src="@mipmap/googlemaps"
-                app:tint="#F8F4F4"
-                />
 
-            <ImageView
-                android:id="@+id/email"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_margin="15dp"
-                android:src="@mipmap/email"
-                app:tint="#F8F4F4"
-                />
-            <ImageView
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/boton_buscar"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_margin="15dp"
-                android:src="@mipmap/arrowright"
-                app:tint="#F8F4F4"/>
+                android:backgroundTint="@color/black"
+                android:clickable="true"
+                android:gravity="right"
+                android:visibility="gone"
+                android:src="@drawable/arrowright"
+                app:tint="#F8F4F4"
 
-
-
-
+                />
 
 
         </LinearLayout>
-    </LinearLayout>
-
-
 </LinearLayout>

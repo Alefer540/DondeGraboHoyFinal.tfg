@@ -1,41 +1,22 @@
 package com.example.dondegrabohoytfg
 
-import android.Manifest
-import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
-import android.content.Context
+
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
 import com.example.dondegrabohoytfg.databinding.ActivityBusquedaBinding
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.core.view.View
-import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.ktx.Firebase
 
 
-
-class BusquedaActivity: AppCompatActivity() {
+class BusquedaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBusquedaBinding
-    private lateinit var database:DatabaseReference
-    //var url="http://maps.google.com/maps?daddr="
-    var url="https://www.google.com/maps/place/"
-    private var number = ""
-    private var correoelectrinico = ""
-    private val requestCall = 1
-    private var reset=true
-    private var num=0
+    private var mostrarCiudad: String = ""
+    private var mostrarAbiertoCerrado: String = ""
+    private var mostrarEspacio: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,199 +24,221 @@ class BusquedaActivity: AppCompatActivity() {
         binding = ActivityBusquedaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         val bundle = intent.extras
-        val Ciudad = bundle?.getString("Ciudad")
-        val Espacio = bundle?.getString("Espacio")
-        val AbiertoCerrado = bundle?.getString("AbiertoCerrado")
+        val email = bundle?.getString("email")
+        setup(email ?: "")
 
 
+        val abiertoCerrado = listOf("--selecciona uno--","Abierto", "Cerrado")
+        val listaCiudades = listOf("--selecciona una ciudad--","Madrid","Barcelona")
+        val listaEspacioCerrado= listOf("--selecciona uno--","Apartamento","Bar","Chalet","Centro de culto","Hotel","Museo")
+        val listaEspacioAbierto= listOf("--selecciona uno--","Azotea","Avenida","Polideportivo/piscina","Parque")
 
-        binding.tvAoC.text=AbiertoCerrado
-        binding.tvCiudad.text=Ciudad
-        binding.tvTipo.text=Espacio
-        println(Ciudad)
-        println(Espacio)
+        val adaptador: ArrayAdapter<String> =
+            ArrayAdapter(this, R.layout.spinner_personalizado, listaCiudades)
+        binding.spinnerCiudad.adapter = adaptador
+        val adaptador2: ArrayAdapter<String> =
+            ArrayAdapter(this, R.layout.spinner_personalizado, abiertoCerrado)
+        binding.spinnerAbiertoCerrado.adapter = adaptador2
+        val adaptador3: ArrayAdapter<String> =
+            ArrayAdapter(this, R.layout.spinner_personalizado, listaEspacioAbierto)
+        binding.spinnerEspacioAbierto.adapter = adaptador3
+        val adaptador4: ArrayAdapter<String> =
+            ArrayAdapter(this, R.layout.spinner_personalizado, listaEspacioCerrado)
+        binding.spinnerEspacioCerrado.adapter = adaptador4
 
-            binding.mostrardatos.visibility= android.view.View.VISIBLE
+        binding.spinnerCiudad.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
-            if (Ciudad != null){
-                if (AbiertoCerrado != null) {
-                    if (Espacio != null) {
-                        if ( Ciudad.isNotEmpty() && AbiertoCerrado.isNotEmpty()&& Espacio.isNotEmpty()){
-                                readData(Ciudad,AbiertoCerrado,Espacio,num)
-                            if (reset){
-                                num++
-                            }else{
-                                num = 0
-                            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                Toast.makeText(
+                    this@BusquedaActivity,
+                    "Seleccione uno para continuar",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
 
+            override fun onItemSelected(p0: AdapterView<*>, p1: View?, clickado1: Int, p3: Long) {
 
-                        }
-                        }
+                if (clickado1 == 0) {
+
+                }
+                if (clickado1 == 1) {
+                    mostrarCiudad = "Madrid"
+
+                }
+                if (clickado1 == 2) {
+                    mostrarCiudad = "Barcelona"
+
+                }
+
+            }
+
+        }
+        binding.spinnerAbiertoCerrado.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    Toast.makeText(
+                        this@BusquedaActivity,
+                        "Seleccione uno para continuar",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                override fun onItemSelected(p0: AdapterView<*>, p1: View?, clickado: Int, p3: Long
+                ) {
+
+                    if (clickado == 0) {
+                        binding.spinnerEspacioAbierto.visibility = View.GONE
+                        binding.spinnerEspacioCerrado.visibility = View.GONE
                     }
+
+                    if (clickado == 1){
+                        mostrarAbiertoCerrado = "Abierto"
+
+                        binding.spinnerEspacioAbierto.visibility = View.VISIBLE
+                        binding.spinnerEspacioCerrado.visibility = View.GONE
+
+                    }
+                    if (clickado == 2){
+                        mostrarAbiertoCerrado = "Cerrado"
+
+                        binding.spinnerEspacioCerrado.visibility = View.VISIBLE
+                        binding.spinnerEspacioAbierto.visibility = View.GONE
+
+                    }
+
+                }
+
+            }
+        binding.spinnerEspacioAbierto.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                Toast.makeText(
+                    this@BusquedaActivity,
+                    "Seleccione uno para continuar",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>, p1: View?, clickado2: Int, p3: Long) {
+                if (clickado2 == 0) {
+
+                }
+
+                if (clickado2 == 1) {
+                    //mostar = getSpinnersSelections()
+                    mostrarEspacio = "Azotea"
+                    mostrarBotnBuscar()
+
+                }
+                if (clickado2 == 2) {
+                    mostrarEspacio = "Avenida"
+                    mostrarBotnBuscar()
+
+                }
+                if (clickado2 == 3) {
+                    mostrarEspacio = "Polideportivo"
+                    mostrarBotnBuscar()
+
+                }
+                if (clickado2 == 4) {
+                    mostrarEspacio = "Parque"
+                    mostrarBotnBuscar()
+
+                }
+            }
+
+        }
+        binding.spinnerEspacioCerrado.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                Toast.makeText(
+                    this@BusquedaActivity,
+                    "Seleccione uno para continuar",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>, p1: View?, clickado3: Int, p3: Long) {
+
+                if (clickado3 == 0) {
+
+                }
+
+                if (clickado3 == 1) {
+
+                    mostrarEspacio = "Apartamento"
+                    mostrarBotnBuscar()
+
+                }
+                if (clickado3 == 2) {
+                    mostrarEspacio = "Bar"
+                    mostrarBotnBuscar()
+                }
+                if (clickado3 == 3) {
+                    mostrarEspacio = "Chalet"
+                    mostrarBotnBuscar()
+                }
+                if (clickado3 == 4) {
+                    mostrarEspacio = "Centro de Culto"
+                    mostrarBotnBuscar()
+
+                }
+
+                if (clickado3 == 5) {
+                    mostrarEspacio = "Hotel"
+                    mostrarBotnBuscar()
+
+                }
+                if (clickado3 == 6) {
+                    mostrarEspacio = "Museo"
+                    mostrarBotnBuscar()
+
                 }
 
 
-        //volver al menu de seleccion
-        binding.volver.setOnClickListener {
-            val volverIntent = Intent(this, MainActivity::class.java)
+            }
 
-            startActivity(volverIntent)
-        }
-        //entrar a maps con busqueda en dirección
-        binding.maps.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(url)
-            startActivity(intent)
-        }
-        binding.llamar.setOnClickListener{
-            makePhoneCall()
-
-        }
-        //enviar email
-        binding.email.setOnClickListener{
-            val emailIntent=Intent(Intent.ACTION_SENDTO,
-            Uri.fromParts("mailto",correoelectrinico,null))
-            startActivity(Intent.createChooser(emailIntent,"Enviando email"))
 
         }
         binding.botonBuscar.setOnClickListener {
-            if (Ciudad != null){
-                if (AbiertoCerrado != null) {
-                    if (Espacio != null) {
-                        if ( Ciudad.isNotEmpty() && AbiertoCerrado.isNotEmpty()&& Espacio.isNotEmpty()){
-                            readData(Ciudad,AbiertoCerrado,Espacio,num)
-                            num++
-                            if(num > 1){
-                                num=0
-                            }
-
-                        }
-                    }
-                }
-            }
-
-        }
-
-    }
 
 
-    //LLAMADA A LA BASE DE DATOS
-    private fun readData(ciudad:String, abiertocerrado:String,espacio:String,num:Int) {
-        database= FirebaseDatabase.getInstance().getReference("Localizaciones")
-        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Localizacion").get().addOnSuccessListener {
-            if(it.value==null){
-                reset=false
-                binding.mostrardatos.callOnClick()
-            }else{
-                reset=true
-                binding.tvLocalizacion.text=it.value.toString()
-            }
-        }
-        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Direccion").get().addOnSuccessListener {
-            if(it.value==null){
-                reset=false
-                binding.mostrardatos.callOnClick()
-            }else{
-                reset=true
-                url="https://www.google.com/maps/place/"
-                binding.tvDireccion.text=it.value.toString()
-                url+=it.value.toString()
-            }
-        }
 
-        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Nombre").get().addOnSuccessListener {
-            if(it.value==null){
-                reset=false
-                binding.mostrardatos.callOnClick()
-            }else{
-                reset=true
-                binding.tvNombreAnfitrion.text=it.value.toString()
-            }
 
-        }
-        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Email").get().addOnSuccessListener {
-            if (it.value == null) {
-                reset = false
-                binding.mostrardatos.callOnClick()
-            } else {
-                reset = true
-                binding.tvEmail.text = it.value.toString()
-                correoelectrinico = it.value.toString()
-            }
-        }
+            val bundle = Bundle()
+            bundle.putString("Ciudad", mostrarCiudad)
+            bundle.putString("Espacio", mostrarEspacio)
+            bundle.putString("AbiertoCerrado", mostrarAbiertoCerrado)
 
-        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Telefono").get().addOnSuccessListener {
-            if (it.value == null) {
-                reset = false
-                binding.mostrardatos.callOnClick()
-            } else {
-                reset = true
-                binding.tvTelf.text=it.value.toString()
-                number=it.value.toString()
-            }
+            val Busquedaintent = Intent(this, ResultadoActivity::class.java)
+            Busquedaintent.putExtras(bundle)
+            startActivity(Busquedaintent)
 
-        }
-        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Descripcion").get().addOnSuccessListener {
-            if (it.value == null) {
-                reset = false
-                binding.mostrardatos.callOnClick()
-            } else {
-                reset = true
-                binding.tvDesc.text=it.value.toString()
-            }
 
-        }
-        database.child(ciudad).child(abiertocerrado).child(espacio).child("$num").child("Imagen").get().addOnSuccessListener {
-            Glide.with(this).load(it.value.toString()).into(binding.foto)
-            if (it.value == null) {
-                reset = false
-                binding.mostrardatos.callOnClick()
-            } else {
-                reset = true
-                Glide.with(this).load(it.value.toString()).into(binding.foto)
-            }
-
-        }
-
-    }
-    //LLAMAR POR TELEFONO
-    private fun makePhoneCall() {
-        if (number.trim { it <= ' ' }.isNotEmpty()) {
-            if (ContextCompat.checkSelfPermission(
-                    this@BusquedaActivity,
-                    Manifest.permission.CALL_PHONE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(
-                    this@BusquedaActivity,
-                    arrayOf(Manifest.permission.CALL_PHONE),
-                    requestCall
-                )
-            } else {
-                val dial = "tel:$number"
-                startActivity(Intent(Intent.ACTION_CALL, Uri.parse(dial)))
-            }
-        } else {
-            Toast.makeText(this@BusquedaActivity, "Enter Phone Number", Toast.LENGTH_SHORT).show()
         }
     }
-    @SuppressLint("MissingSuperCall")
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grantResults: IntArray) {
+    private fun setup(email:String){
 
-        //Para las llamadas
-        if (requestCode == requestCall) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                makePhoneCall()
-            } else {
-                Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show()
-            }
-        }
+        binding.tvNombreTextView.text=email
     }
+    private fun mostrarBotnBuscar(){
+        binding.botonBuscar.visibility=View.VISIBLE
+    }
+
 
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
